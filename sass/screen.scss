@@ -1,0 +1,109 @@
+// ---------------------------------------------------------------------------
+// Imports
+
+@import "compass";
+@import "base";
+
+/* -------------------------------------------------------------------------*/
+/* Layout */
+
+body {
+    background: hsl(355,100%,42%);
+    color: #fff;
+}
+
+.container {
+    @include container;
+}
+
+h1 {
+    @include hide-text;
+}
+
+.logo {
+    display: block;
+    margin: 0 auto;
+    max-width: 512px;
+    width: 100%;
+}
+
+h2 {
+    margin: 1.5em 0 1em;
+}
+
+p {
+    margin: 1em 0;
+}
+
+.btn {
+    text-align: center;
+}
+
+/* button from http://codepen.io/Treehouse/pen/vEkit */
+
+/* Color Themes - Variables */
+
+$black: #585352;
+$blue: #3BA9E4;
+$green: #75B343;
+$orange: #FF6A42;
+
+/* Common Colors - Variables */
+
+$off-wht: rgba(white,.4);
+
+/* Mixins */
+
+@mixin btn-theme($btn-color) {
+    border-color: darken($btn-color, 20%);
+    background-color: $btn-color;
+    &:hover {
+        background-color: darken($btn-color, 6%);
+        box-shadow: 0 .125em $off-wht, inset 0 .063em $off-wht, inset 0 -.188em lighten($btn-color, 2%);
+    }
+    &:active {
+        box-shadow: 0 .063em $off-wht, inset 0 0 1.094em darken($btn-color, 40%), inset 0 .063em darken($btn-color, 20%),inset 0 -0.188em darken($btn-color, 20%);
+    }
+}
+
+@mixin trans($val...) {
+    -webkit-transition: $val;
+    -moz-transition: $val;
+    -o-transition: $val;
+    transition: $val;
+}
+
+/* Button Global */
+
+.btn {
+    display: inline-block;
+    margin: 1rem;
+    padding: .938em 1.875em;
+    border: .094em solid;
+    border-radius: .625em;
+    box-shadow: 0 .375em .313em -.313em rgba(black,.8), inset 0 .063em $off-wht, inset 0 -.188em rgba(black,.15);
+    color: #FFF;
+    font: bold 1.8rem sans-serif;
+    @include trans(0.2s ease-in-out);
+    text: {
+        transform: uppercase;
+        decoration: none;
+        shadow: 0 .063em rgba(black,.3);
+    }
+  cursor:pointer;
+}
+
+/* Themes */
+
+.black {
+    @include btn-theme($black);
+}
+.blue {
+    @include btn-theme($blue);
+}
+.green {
+    @include btn-theme($green);
+}
+.orange {
+    @include btn-theme($orange);
+}
